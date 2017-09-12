@@ -10,7 +10,32 @@ void decode_object(const json::object&);
 
 void IterateJSONValue()
 {
+//usage 1
+    const char* input=R"V0G0N(
+	{
+    	"Service Id":"csf_sdc_srv2-2134621828",
+    	"Service Name":"csf_sdc_srv2",
+    	"Scope":"0",
+    	"System Name":"qd",
+    	"Node Name":"sdc-1.localdomain",
+    	"IP Address":"10.10.10.12",
+    	"Port":"1002.3",
+    	"Service Info": {
+        	"Tag":"sdc_tag",
+        	"Mapping":"sdc_mapping",
+        	"Version":"sdc_versioning"
+    	},
+    	"SDC API Version":"1.4"
+	} )V0G0N";
 
+
+    json::value obj1 = json::value::parse(input);
+    json::object& object1 = obj.as_object();
+
+        decode_object(object1);
+
+
+//usage 2
     json::value obj = json::value::object();
     json::value sub_obj = json::value::object();
     json::object& object = obj.as_object();
